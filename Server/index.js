@@ -22,6 +22,7 @@ app.get("/create", (req, res) => {
     create();
   } catch (error) {
     rollbar.error(error);
+    res.send("Working!!!!!");
   }
 });
 

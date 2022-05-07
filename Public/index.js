@@ -3,6 +3,7 @@ console.log(button);
 console.log("working");
 
 button.addEventListener("click", () => {
-  console.log("working");
-  //   axios.get("/create").then();
+  axios.get("/create").then((res) => {
+    console.log(res.data);
+  });
 });
