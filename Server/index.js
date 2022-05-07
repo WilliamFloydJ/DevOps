@@ -19,7 +19,7 @@ rollbar.log("Hello world!");
 
 let users = [];
 
-app.post("/create", (req, res) => {
+app.post("/api/create", (req, res) => {
   const { name } = req.body;
 
   if ((name[0] = !name[0].toUppercase())) {
