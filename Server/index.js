@@ -7,8 +7,6 @@ app.use(cors());
 
 // include and initialize the rollbar library with your access token
 var Rollbar = require("rollbar");
-const req = require("express/lib/request");
-const res = require("express/lib/response");
 const { create } = require("domain");
 var rollbar = new Rollbar({
   accessToken: "a65031504a4d4c429fd52e782dabf5e9",
@@ -23,8 +21,16 @@ app.get("/create", (req, res) => {
   try {
     create();
   } catch (error) {
-    console.error(error);
+    rollbar.error(error);
   }
+});
+
+app.get("/css", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Public/main.css"));
+});
+
+app.get("/js", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Public/index.js"));
 });
 
 app.get("/", function (req, res) {
