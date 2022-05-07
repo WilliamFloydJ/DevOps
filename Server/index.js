@@ -18,12 +18,7 @@ var rollbar = new Rollbar({
 rollbar.log("Hello world!");
 
 app.get("/create", (req, res) => {
-  try {
-    create();
-  } catch (error) {
-    rollbar.error(error);
-    res.send("Working!!!!!");
-  }
+  rollbar.error("Boom");
 });
 
 app.get("/css", (req, res) => {
