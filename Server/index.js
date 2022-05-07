@@ -29,7 +29,7 @@ app.get("/css", (req, res) => {
   res.sendFile(path.join(__dirname, "../Public/main.css"));
 });
 
-app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
+app.use("/js", express.static(path.join(__dirname, "../Public/index.js")));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../Public/index.html"));
