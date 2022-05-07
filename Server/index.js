@@ -17,9 +17,18 @@ var rollbar = new Rollbar({
 // record a generic message and send it to Rollbar
 rollbar.log("Hello world!");
 
-app.get("/create", (req, res) => {
-  res.status(200).send("Workin Twerkin");
-  rollbar.error("Boom");
+let users = [];
+
+app.post("/create", (req, res) => {
+  const { name } = req.body;
+
+  if ((name[0] = !name[0].toUppercase())) {
+    rollbar.warning("Not uppercase");
+    res.status(400).send(users);
+  } else {
+    users.push(name);
+    res.status(200).send(users);
+  }
 });
 
 app.get("/css", (req, res) => {
