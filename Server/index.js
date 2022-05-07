@@ -21,20 +21,20 @@ let users = [];
 app.post("/api/create", (req, res) => {
   const { name } = req.body;
 
-  if (name.charAt(0) != name.charAt(0).toUppercase()) {
-    rollbar.warning("Not uppercase");
-    res.status(400).send(users);
-  } else {
-    users.push(name);
-    res.status(200).send(users);
-  }
+  //   if (name.charAt(0) != name.charAt(0).toUppercase()) {
+  //     rollbar.warning("Not uppercase");
+  //     res.status(400).send(users);
+  //   } else {
+  users.push(name);
+  res.status(200).send(users);
+  //  }
 });
 
 app.get("/css", (req, res) => {
   res.sendFile(path.join(__dirname, "../Public/main.css"));
 });
 
-app.use("/js", express.static(path.join(__dirname, "../Public/index.js")));
+app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../Public/index.html"));
