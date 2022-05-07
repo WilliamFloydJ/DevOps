@@ -7,7 +7,6 @@ app.use(cors());
 
 // include and initialize the rollbar library with your access token
 var Rollbar = require("rollbar");
-const { create } = require("domain");
 var rollbar = new Rollbar({
   accessToken: "a65031504a4d4c429fd52e782dabf5e9",
   captureUncaught: true,
