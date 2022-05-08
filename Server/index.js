@@ -39,11 +39,15 @@ app.get("/css", (req, res) => {
 app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
 
 app.get("/", function (req, res) {
-  try {
-    res.sendFile(path.join(__dirname, "../Public/index.html"));
-  } catch (err) {
-    rollbar.critical("Home Page will not load", { error: err });
-  }
+  res.sendFile(
+    path.join(__dirname, "../Public/index.html", (err) => {
+      if (err) {
+        rollbar.critical("Home Page will not load", { error: err });
+      } else {
+        rollbar.info("Page Successfully Loaded");
+      }
+    })
+  );
 });
 
 const port = process.env.PORT || 4005;
