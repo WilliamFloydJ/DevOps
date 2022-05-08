@@ -12,6 +12,5 @@ button.addEventListener("click", () => {
     })
     .catch((err) => {
       console.log(err);
-      warning.textContent = res.body;
     });
 });
