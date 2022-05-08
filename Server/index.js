@@ -22,8 +22,10 @@ app.post("/api/create", (req, res) => {
   const { name } = req.body;
   if (name.charAt(0) === name.charAt(0).toUpperCase()) {
     users.push(name);
+    rollbar.log("User Added Successfully", { name: name });
     res.status(200).send(users);
   } else {
+    rollbar.warning("incorrect Username");
     res.status(400).send(users);
   }
 });
