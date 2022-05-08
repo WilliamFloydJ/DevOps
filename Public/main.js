@@ -8,7 +8,8 @@ button.addEventListener("click", () => {
   axios
     .post("/api/create", { name: input.value })
     .then((res) => {
-      warning.textContent = res.body;
+      warning.textContent = res.data;
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);
