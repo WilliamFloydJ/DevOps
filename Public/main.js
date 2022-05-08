@@ -1,5 +1,5 @@
 const button = document.querySelector("button");
-const warning = document.querySelector("warning");
+const warning = document.querySelector("#warning");
 console.log("working");
 console.log(warning);
 const input = document.querySelector("input");
