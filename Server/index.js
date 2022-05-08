@@ -33,13 +33,32 @@ app.post("/api/create", (req, res) => {
 });
 
 app.get("/css", (req, res) => {
-  res.sendFile(path.join(__dirname, "../Public/main.css"));
+  res.sendFile(path.join(__dirname, "../Public/main.css"), (err) => {
+    if (err) {
+      rollbar.critical("CSS file isn't being loaded");
+    }
+  });
 });
 
 app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
 
+// app.get("/", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../Public/index.html"));
+// });
+
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "../Public/index.html"));
+  var options = {
+    root: path.join(__dirname),
+  };
+
+  var fileName = "index.html";
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      rollbar.critical("Css will not load");
+    } else {
+      rollbar.info("Css loaded Successfully");
+    }
+  });
 });
 
 const port = process.env.PORT || 4005;
