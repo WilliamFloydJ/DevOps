@@ -7,9 +7,9 @@ const input = document.querySelector("input");
 button.addEventListener("click", () => {
   axios
     .post("/api/create", { name: input.value })
-    .then(({ data: remark }) => {
-      warning.textContent = remark;
-      console.log(remark);
+    .then((res) => {
+      warning.textContent = res.data;
+      console.log(res.body);
     })
     .catch((err) => {
       console.log(err);
