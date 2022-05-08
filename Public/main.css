@@ -1,3 +1,53 @@
 body {
-  background-color: brown;
+  background-color: #b0d0d3;
+  display: flex;
+  align-items: center;
+  font-family: Apple Chancery, cursive;
+  flex-direction: column;
+}
+section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #c08497;
+  width: 40vw;
+  height: 20vh;
+  border-radius: 2vw;
+}
+h1 {
+  background-color: #f7e3af;
+  padding: 1%;
+  border-radius: 2vw;
+}
+h2 {
+  background-color: #f7af9d;
+  padding: 5%;
+  border-radius: 2vw;
+  margin: 6.25%;
+}
+#username {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+  height: 100%;
+}
+#password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+  height: 100%;
+}
+input {
+  height: 16.75%;
+}
+button {
+  font-family: Apple Chancery, cursive;
+  background-color: #f3eec3;
+  font-size: larger;
+  font-weight: 600;
+  border-radius: 2vh;
+  width: 30%;
+  height: 20%;
 }

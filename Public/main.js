@@ -1,5 +1,5 @@
 const button = document.querySelector("button");
-
+const warning = document.querySelector("warning");
 console.log("working");
 
 const input = document.querySelector("input");
@@ -8,7 +8,7 @@ button.addEventListener("click", () => {
   axios
     .post("/api/create", { name: input.value })
     .then((res) => {
-      console.log(res.data);
+      warning.textContent = res.data;
     })
     .catch((err) => {
       console.log(err);
