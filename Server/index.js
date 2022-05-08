@@ -25,7 +25,6 @@ app.post("/api/create", (req, res) => {
     rollbar.error(
       "User Tried adding a User without the first Character being Uppercase"
     );
-    res.status(400).send(users);
   }
 });
 
