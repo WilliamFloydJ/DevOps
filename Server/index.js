@@ -14,20 +14,30 @@ var rollbar = new Rollbar({
 });
 
 let users = [];
+let userNames = [];
 
 app.post("/api/create", (req, res) => {
-  const { name } = req.body;
-  if (name.charAt(0) === name.charAt(0).toUpperCase()) {
-    users.push(name);
-    rollbar.log("User Added Successfully", { User: name });
-    res.status(200).send("User Added Successfully");
+  let { name, password } = req.body;
+  let salt = bcrypt.genSaltSync(10);
+  let hash = bcrypt.hashSync(password, salt);
+  let user = { name, hash };
+  if (userNames.includes(name) === false) {
+    if (name.charAt(0) === name.charAt(0).toUpperCase()) {
+      users.push(user);
+      userNames.push(name);
+      rollbar.log("User Added Successfully", { User: name });
+      res.status(200).send("User Added Successfully");
+    } else {
+      res
+        .status(200)
+        .send("Please provide a UserName where the first Character is capital");
+      rollbar.error(
+        "User Tried adding a User without the first Character being Uppercase"
+      );
+    }
   } else {
-    res
-      .status(200)
-      .send("Please provide a UserName where the first Character is capital");
-    rollbar.error(
-      "User Tried adding a User without the first Character being Uppercase"
-    );
+    res.status(200).send("UserName Already Taken");
+    rollbar.error("User Tried adding a User that already exists");
   }
 });
 

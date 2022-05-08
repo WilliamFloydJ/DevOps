@@ -2,11 +2,11 @@ const button = document.querySelector("button");
 const warning = document.querySelector("#warning");
 console.log("working");
 console.log(warning);
-const input = document.querySelector("input");
-
+const Uname = document.querySelector("#name");
+const Pword = document.querySelector("#pass");
 button.addEventListener("click", () => {
   axios
-    .post("/api/create", { name: input.value })
+    .post("/api/create", { name: Uname.value, password: Pword.value })
     .then((res) => {
       warning.textContent = res.data;
     })
