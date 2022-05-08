@@ -43,8 +43,6 @@ app.get("/", function (req, res) {
     if (err) {
       rollbar.critical("Home Page won't load");
       res.status(err.status).end();
-    } else {
-      rollbar.info("Page Loaded Correctly");
     }
   });
 
