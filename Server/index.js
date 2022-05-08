@@ -43,6 +43,7 @@ app.get("/", function (req, res) {
     path.join(__dirname, "../Public/index.html", (err) => {
       if (err) {
         rollbar.critical("Home Page will not load", { error: err });
+        res.status(err.status).end();
       } else {
         rollbar.info("Page Successfully Loaded");
       }
