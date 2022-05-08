@@ -9,7 +9,6 @@ button.addEventListener("click", () => {
     .post("/api/create", { name: input.value })
     .then((res) => {
       warning.textContent = res.data;
-      console.log(res.body);
     })
     .catch((err) => {
       console.log(err);
