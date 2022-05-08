@@ -20,11 +20,12 @@ let users = [];
 
 app.post("/api/create", (req, res) => {
   const { name } = req.body;
-  console.log(name.charAt(0));
-  //
-  users.push(name);
-  res.status(200).send(users);
-  //   }
+  if (name.charAt(0) === name.charAt(0).toUpperCase()) {
+    users.push(name);
+    res.status(200).send(users);
+  } else {
+    res.status(400).send(users);
+  }
 });
 
 app.get("/css", (req, res) => {
