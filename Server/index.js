@@ -22,10 +22,12 @@ app.post("/api/create", (req, res) => {
   const { name } = req.body;
   if (name.charAt(0) === name.charAt(0).toUpperCase()) {
     users.push(name);
-    rollbar.log("User Added Successfully", { name: name });
+    rollbar.log("User Added Successfully", { User: name });
     res.status(200).send(users);
   } else {
-    rollbar.warning("incorrect Username");
+    rollbar.error(
+      "User Tried adding a User without the first Character being Uppercase"
+    );
     res.status(400).send(users);
   }
 });
@@ -37,7 +39,11 @@ app.get("/css", (req, res) => {
 app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "../Public/index.html"));
+  try {
+    res.sendFile(path.join(__dirname, "../Public/index.html"));
+  } catch (err) {
+    rollbar.critical("Home Page will not load", { error: err });
+  }
 });
 
 const port = process.env.PORT || 4005;
