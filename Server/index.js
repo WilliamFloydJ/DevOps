@@ -33,30 +33,33 @@ app.post("/api/create", (req, res) => {
 });
 
 app.get("/css", (req, res) => {
-  res.sendFile(path.join(__dirname, "../Public/main.css"), (err) => {
+  var options = {
+    root: path.join(__dirname, "./Public"),
+  };
+
+  var fileName = "main.css";
+  res.sendFile(fileName, options, function (err) {
     if (err) {
-      rollbar.critical("CSS file isn't being loaded");
+      rollbar.critical("CSS will not load");
+    } else {
+      rollbar.info("CSS loaded Successfully");
     }
   });
 });
 
 app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
 
-// app.get("/", function (req, res) {
-//   res.sendFile(path.join(__dirname, "../Public/index.html"));
-// });
-
 app.get("/", function (req, res) {
   var options = {
-    root: path.join(__dirname),
+    root: path.join(__dirname, "./Public"),
   };
 
   var fileName = "index.html";
   res.sendFile(fileName, options, function (err) {
     if (err) {
-      rollbar.critical("Css will not load");
+      rollbar.critical("Home Page will not load");
     } else {
-      rollbar.info("Css loaded Successfully");
+      rollbar.info("Home page loaded Successfully");
     }
   });
 });
