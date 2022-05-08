@@ -1,5 +1,3 @@
-const req = require("express/lib/request");
-
 const button = document.querySelector("button");
 const warning = document.querySelector("#warning");
 console.log("working");
