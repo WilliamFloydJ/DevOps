@@ -39,6 +39,12 @@ h2 {
   padding-bottom: 0;
   height: 100%;
 }
+#warning {
+  background-color: #f7af9d;
+  padding: 1%;
+  border-radius: 2vw;
+  margin: 6.25%;
+}
 input {
   height: 16.75%;
 }

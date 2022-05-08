@@ -22,6 +22,9 @@ app.post("/api/create", (req, res) => {
     rollbar.log("User Added Successfully", { User: name });
     res.status(200).send("User Added Successfully");
   } else {
+    res
+      .status(200)
+      .send("Please provide a UserName where the first Character is capital");
     rollbar.error(
       "User Tried adding a User without the first Character being Uppercase"
     );
