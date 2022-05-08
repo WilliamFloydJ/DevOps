@@ -13,9 +13,6 @@ var rollbar = new Rollbar({
   captureUnhandledRejections: true,
 });
 
-// record a generic message and send it to Rollbar
-rollbar.log("Hello world!");
-
 let users = [];
 
 app.post("/api/create", (req, res) => {
@@ -51,7 +48,7 @@ app.use("/js", express.static(path.join(__dirname, "../Public/main.js")));
 
 app.get("/", function (req, res) {
   var options = {
-    root: path.join(__dirname, "/Public"),
+    root: path.join(__dirname, "../Public"),
   };
 
   var fileName = "index.html";
