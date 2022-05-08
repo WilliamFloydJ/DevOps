@@ -31,7 +31,7 @@ app.post("/api/create", (req, res) => {
 
 app.get("/css", (req, res) => {
   var options = {
-    root: path.join(__dirname, "/Public"),
+    root: path.join(__dirname, "../Public"),
   };
 
   var fileName = "main.css";
