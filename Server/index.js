@@ -38,7 +38,7 @@ app.post("/api/create", (req, res) => {
     }
   } else {
     res.status(200).send("UserName Already Taken");
-    rollbar.error("User Tried adding a User that already exists");
+    rollbar.warning("User Tried adding a User that already exists");
   }
 });
 
