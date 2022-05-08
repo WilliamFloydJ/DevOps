@@ -20,7 +20,7 @@ app.post("/api/create", (req, res) => {
   if (name.charAt(0) === name.charAt(0).toUpperCase()) {
     users.push(name);
     rollbar.log("User Added Successfully", { User: name });
-    res.status(200).send(users);
+    res.status(200).send("User Added Successfully");
   } else {
     rollbar.error(
       "User Tried adding a User without the first Character being Uppercase"
